@@ -10,7 +10,6 @@ import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
-import com.blankj.utilcode.util.ObjectUtils;
 import com.example.selectandcropview.data.SelectedRect;
 
 import java.util.ArrayList;
@@ -137,7 +136,7 @@ public class ImageSelectCropView extends View {
             return true;
         }else{
             List<SelectedRect> rects = mClickAgent.getRects();
-            if(ObjectUtils.isEmpty(rects)) return false;
+            if(rects == null || rects.isEmpty()) return false;
 
             List<SelectedRect> selectedRects = new ArrayList<>();
             for(int i=0;i<rects.size();i++){

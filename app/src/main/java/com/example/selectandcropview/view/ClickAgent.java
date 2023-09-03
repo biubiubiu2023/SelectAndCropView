@@ -131,18 +131,6 @@ class ClickAgent {
      * 获取最小触摸距离
      */
     protected float getMinTouchDistance() {
-        // 疑问一：为什么要使用 1dp 来作为最小触摸距离？
-        //        这是因为用户点击的时候，手指 down 和 up 的坐标不相等，会存在一点误差
-        //        在有些手机上面，误差会比较小，还有一些手机上面，误差会比较大
-        //        经过拿不同的手机测试和验证，这个误差值可以锁定在 1dp 内
-        //        当然我的结论不一定正确，你要是有发现新的问题也可以找我反馈，我会持续优化这个问题
-        // 疑问二：为什么不使用 ViewConfiguration.get(context).getScaledTouchSlop() ？
-        //        这是因为这个 API 获取到的数值太大了，有一定概率会出现误判，同样的手机上面
-        //        用 getScaledTouchSlop 获取到的是 24，而系统 1dp 获取的到是 3，
-        //        两者相差太大，因为 getScaledTouchSlop API 默认获取的是 8dp * 3 = 24px
-        // 疑问三：为什么要用 Resources.getSystem 来获取，而不是 context.getResources？
-        //        这是因为如果用了 AutoSize 这个框架，上下文中的 1dp 就不是 3dp 了
-        //        使用 Resources.getSystem 能够保证 Resources 对象不被第三方框架篡改
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2,
                 Resources.getSystem().getDisplayMetrics());
     }

@@ -4,7 +4,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.blankj.utilcode.util.SizeUtils
 import com.example.selectandcropview.data.Pos
 import com.example.selectandcropview.data.SelectedRect
 import com.example.selectandcropview.databinding.ActivityMainBinding
@@ -48,8 +47,8 @@ class MainActivity : AppCompatActivity() {
 
                 val rects = mutableListOf<SelectedRect>()
 
-                val space = SizeUtils.dp2px(70f)
-                val cropHeight = SizeUtils.dp2px(50f)
+                val space = ViewUtils.dp2px(70f)
+                val cropHeight = ViewUtils.dp2px(50f)
                 for (i in 4 downTo   1){
                     val pos = mutableListOf<Pos>()
                     pos.add(Pos(size[0]/5, space * i))

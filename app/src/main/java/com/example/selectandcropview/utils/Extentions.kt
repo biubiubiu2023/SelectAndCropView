@@ -1,7 +1,6 @@
 package com.example.selectandcropview.utils
 
 import android.view.View
-import com.blankj.utilcode.util.SizeUtils
 
 /**
  * 判断是否重复点击
@@ -22,5 +21,5 @@ fun View?.isDoubleClick(time:Int = 600):Boolean{
  * 设置圆角
  */
 fun View.setRoundConner(radius:Int, radiusSide:Int = ViewHelper.RADIUS_ALL){
-    ViewHelper.setViewOutline(this, SizeUtils.dp2px(radius.toFloat()),radiusSide)
+    ViewHelper.setViewOutline(this, ViewUtils.dp2px(radius.toFloat()),radiusSide)
 }

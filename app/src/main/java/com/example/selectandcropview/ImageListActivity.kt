@@ -8,8 +8,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.blankj.utilcode.util.ImageUtils
 import com.example.selectandcropview.data.SelectedRect
+import com.example.selectandcropview.utils.ViewUtils
 
 /**
  * 创建时间：2023/9/2
@@ -37,7 +37,7 @@ class ImageListActivity : AppCompatActivity() {
         opts.inScaled = false
         val decodeResource = BitmapFactory.decodeResource(resources,R.drawable.background,opts)
         for(rect in datas){
-            val clip = ImageUtils.clip(
+            val clip = ViewUtils.clip(
                 decodeResource,
                 rect.points[0].x,
                 rect.points[0].y,
@@ -45,7 +45,9 @@ class ImageListActivity : AppCompatActivity() {
                 rect.points[2].y - rect.points[0].y,
                 false
             )
-            bitmaps.add(clip)
+            clip?.let {
+                bitmaps.add(it)
+            }
         }
 
         recyclerView.apply {
@@ -53,4 +55,6 @@ class ImageListActivity : AppCompatActivity() {
             adapter = ImagesAdapter(bitmaps,this@ImageListActivity)
         }
     }
+
+
 }

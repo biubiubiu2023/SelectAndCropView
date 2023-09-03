@@ -1,5 +1,7 @@
 package com.example.selectandcropview.utils
 
+import android.content.res.Resources
+import android.graphics.Bitmap
 import android.graphics.RectF
 import android.widget.ImageView
 
@@ -24,4 +26,26 @@ object ViewUtils {
         return rectf
     }
 
+    fun clip(
+        src: Bitmap,
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+        recycle: Boolean
+    ): Bitmap? {
+        if (isEmptyBitmap(src)) return null
+        val ret = Bitmap.createBitmap(src, x, y, width, height)
+        if (recycle && !src.isRecycled && ret != src) src.recycle()
+        return ret
+    }
+
+    fun isEmptyBitmap(src: Bitmap?): Boolean {
+        return src == null || src.width == 0 || src.height == 0
+    }
+
+    fun dp2px(dpValue: Float): Int {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
+    }
 }

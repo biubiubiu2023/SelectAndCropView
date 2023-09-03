@@ -4,7 +4,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 
-import com.blankj.utilcode.util.SizeUtils;
+import com.example.selectandcropview.utils.ViewUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,8 +27,8 @@ public class SelectedRect implements Serializable {
     public List<Pos> points;
     int[] mImageSize;
     public CustomRect mImageRealPosition;
-    private int minHeight = SizeUtils.dp2px(22.5f);
-    private int minWidth = SizeUtils.dp2px(60f);
+    private int minHeight = ViewUtils.INSTANCE.dp2px(22.5f);
+    private int minWidth = ViewUtils.INSTANCE.dp2px(60f);
 
 
     public SelectedRect(List<Pos> pos, int[] imageSize, RectF imageRealPosition) {
